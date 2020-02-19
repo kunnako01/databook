@@ -1,0 +1,39 @@
+{% extends 'layout.html' %} {% block content %}
+<h2 align="center">Sing Up</h2>
+<br> {% for mess in messages %}
+<div class="alert alert-info" role="alert">
+    <a class="alert-link">{{mess}} </a>
+</div>
+{% endfor %}
+
+<form action="adduser" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">Firstname</label>
+        <input type="text" class="form-control" name="firstname" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Lastname</label>
+        <input type="text" class="form-control" name="lastname" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Username</label>
+        <input type="text" class="form-control" name="username" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Re-Password</label>
+        <input type="password" class="form-control" name="rpassword" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" class="form-control" name="email1" value="">
+    </div>
+    <input type="submit" value="submit" class="btn btn-primary" href="/adduser">
+    <a class="btn btn-primary" href="/login" role="button">Back</a>
+
+</form>
+{{username}} {% endblock %}

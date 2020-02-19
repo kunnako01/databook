@@ -1,0 +1,86 @@
+{% extends 'layout.html' %} {% block content %}
+<!-- <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">SQl</label>
+        <input type="text" class="form-control" name="sq" value="{{sql_data_srting}}">
+    </div>
+    <input type="submit" value="run" class="btn-primary">
+</form> -->
+<form method="POST">
+    {% csrf_token %}
+    <select class="form-control form-control-lg" id="flide" name="flide"> 
+    <option value="book">book</option>
+    <option value="author">author</option>
+    <option value="publisher">publisher</option>
+  </select>
+    <br>
+    <select class="form-control" id="num1" name="num1">
+        <option value=10 >10</option>
+        <option value=100>100</option>
+        <option value="">All</option>
+      </select>
+    <br>
+    <button ailgn="center" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<br>{% if flide == 'book' %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>No.</th>
+            <th>id</th>
+            <th>name</th>
+            <th>page</th>
+            <th>year</th>
+        </tr>
+        {% for i in data_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.page}}</td>
+            <td>{{i.year}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% elif flide == 'author' %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>No.</th>
+            <th>name</th>
+            <th>date</th>
+        </tr>
+        {% for i in data_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.date}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% elif flide == 'publisher' %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>No.</th>
+            <th>name</th>
+            <th>address</th>
+        </tr>
+        {% for i in data_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.addr}}</td>
+        </tr>
+        {% endfor %}
+</table>
+{% endif %}
+<br>
+<div class="form-group">
+    <label for="">Time</label>
+    <input type="text" class="form-control" name="sq" value="{{time_cou}}">
+</div>
+{% endblock %}
