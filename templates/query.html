@@ -1,0 +1,50 @@
+{% extends 'layout.html' %} {% block content %}
+<h2 align="center">Query</h2>
+<br> {% for mess in messages %}
+<div class="alert alert-info" role="alert">
+    <a class="alert-link">{{mess}} </a>
+</div>
+{% endfor %}
+<!-- {{sql_data_string}} -->
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">SQL</label>
+        <input type="text" class="form-control" name="sql_text" value="{{sql_text}}">
+    </div>
+    <input type="submit" value="Run" class="btn btn-primary">
+</form>
+<!-- {{colnames}} -->
+{% if sql_text == None %}<label for="">SQL</label> {% else %}
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table">
+        <thead class="thead-dark">
+
+            <tr>{% for colname in colnames %}
+                <th>{{colname}}</th>{% endfor %}
+                <!-- <th>Update</th> -->
+                <th>Delete</th>
+            </tr>
+
+            <tr>{% for sql_list1 in sql_list %} {% for sql_list2 in sql_list1 %}
+                <td>{{ sql_list2 }}</td> {% endfor %}
+                <!-- <td><a class="btn btn-primary" href="/home" role="button">Edit</a></td> -->
+                <td>
+                    <form action="Qdele" class="form-inline" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="hidden" class="form-control" name="id1" value="{{sql_list1.0}}">
+                            <input type="hidden" class="form-control" name="id2" value="{{colnames.0}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Detele</button>
+                        <!-- <input type="submit" value="Delete" class="btn btn-primary"> -->
+                    </form>
+                </td>
+            </tr>{% endfor %}
+
+    </table>
+</div>
+{% endif %}
+<!-- <br> {% for i in sql_list %}{{ forloop.counter }} {{i}}
+<h4>-----------------------------------------------------------------------------------------</h4>
+{% endfor %} -->{% endblock %}

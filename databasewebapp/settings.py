@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'km8i6vxr78g*n2e70w=!iu+de0gq!$-*ci1nwtjcg)!7w!p*na'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://book-databasecpre15.herokuapp.com/']
 
 
 # Application definition

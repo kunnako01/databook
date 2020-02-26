@@ -1,0 +1,42 @@
+{% extends 'layout.html' %} {% block content %}
+<h2 align="center">Search</h2>
+<br>
+<!-- <div class="alert alert-info" role="alert">
+    <a class="alert-link">{{mess}} </a>
+</div> -->
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputEmail4">Book</label>
+            <input type="text" class="form-control" name="seach_book" value="{{seach_book}}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputPassword4">Author</label>
+            <input type="text" class="form-control" name="seach_author" value="{{seach_author}}">
+        </div>
+        <div class=" form-group col-md-4 ">
+            <label for="inputPassword4 ">Publisher</label>
+            <input type="text " class="form-control " name="seach_publisher" value="{{seach_publisher}}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">search</button>
+</form>
+<br> {% if cou != 0 %}
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book.</th>
+                <th>Author.</th>
+                <th>Publisher.</th>
+            </tr>
+
+            <tr>{% for sql_list1 in sql_list %} {% for sql_list2 in sql_list1 %}
+                <td>{{ sql_list2 }}</td> {% endfor %}
+            </tr>{% endfor %}
+
+    </table>
+</div>
+
+{%endif%} {% endblock %}

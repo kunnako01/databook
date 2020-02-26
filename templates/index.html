@@ -1,4 +1,5 @@
 {% extends 'layout.html' %} {% block content %}
+
 <!-- <form method="POST">
     {% csrf_token %}
     <div class="form-group">
@@ -7,9 +8,21 @@
     </div>
     <input type="submit" value="run" class="btn-primary">
 </form> -->
+<br>
+<ul class=" list-group list-group-horizontal ">
+    <li class="list-group-item ">Book</li>
+    <li class="list-group-item ">{{count1.0}}</li>
+    <h1>&nbsp;</h1>
+    <li class="list-group-item ">Author</li>
+    <li class="list-group-item ">{{count1.1}}</li>
+    <h1>&nbsp;</h1>
+    <li class="list-group-item ">Publisher</li>
+    <li class="list-group-item ">{{count1.2}}</li>
+</ul>
+<br>
 <form method="POST">
     {% csrf_token %}
-    <select class="form-control form-control-lg" id="flide" name="flide"> 
+    <select class="form-control form-control-lg " id="flide" name="flide"> 
     <option value="book">book</option>
     <option value="author">author</option>
     <option value="publisher">publisher</option>
@@ -21,66 +34,89 @@
         <option value="">All</option>
       </select>
     <br>
-    <button ailgn="center" type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- <a class="btn btn-primary" href="/insert" role="button">Insert</a>
+    <a class="btn btn-primary" href="/insert " role="button">Delete</a>
+    <a class="btn btn-primary" href="/insert" role="button">Update</a> -->
 </form>
 
 
 <br>{% if flide == 'book' %}
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>No.</th>
-            <th>id</th>
-            <th>name</th>
-            <th>page</th>
-            <th>year</th>
-        </tr>
-        {% for i in data_list %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{i.id}}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.page}}</td>
-            <td>{{i.year}}</td>
-        </tr>
-        {% endfor %}
-</table>
-{% elif flide == 'author' %}
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>No.</th>
-            <th>name</th>
-            <th>date</th>
-        </tr>
-        {% for i in data_list %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.date}}</td>
-        </tr>
-        {% endfor %}
-</table>
-{% elif flide == 'publisher' %}
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>No.</th>
-            <th>name</th>
-            <th>address</th>
-        </tr>
-        {% for i in data_list %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.addr}}</td>
-        </tr>
-        {% endfor %}
-</table>
-{% endif %}
-<br>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>id</th>
+                <th>name</th>
+                <th>page</th>
+                <th>year</th>
+                <th>publisher name</th>
+                <!-- <th>Update</th>
+            <th>Delete</th> -->
+            </tr>
+            {% for i in data_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.page}}</td>
+                <td>{{i.year}}</td>
+                <td>{{i.pb}}</td>
+                <!-- <td><a class="btn btn-primary" href="/home" role="button">Edit</a></td>
+            <td><a class="btn btn-primary" href="/home" role="button">Delete</a></td> -->
+            </tr>
+
+            {% endfor %}
+    </table>
+</div>
 <div class="form-group">
     <label for="">Time</label>
     <input type="text" class="form-control" name="sq" value="{{time_cou}}">
 </div>
-{% endblock %}
+{% elif flide == 'author' %}
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>name</th>
+                <th>date</th>
+            </tr>
+            {% for i in data_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.date}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+<div class="form-group">
+    <label for="">Time</label>
+    <input type="text" class="form-control" name="sq" value="{{time_cou}}">
+</div>
+{% elif flide == 'publisher' %}
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>name</th>
+                <th>address</th>
+            </tr>
+            {% for i in data_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.addr}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+<div class="form-group">
+    <label for="">Time</label>
+    <input type="text" class="form-control" name="sq" value="{{time_cou}}">
+</div>
+{% endif %}
+<br> {% endblock %}

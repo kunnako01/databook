@@ -26,4 +26,11 @@ urlpatterns = [
     path('singup/adduser', views.addu),
     path('login/loginw', views.loginw),
     path('logout/', views.logout),
+    path('query/', views.query),
+    path('insert/', views.insert),
+    path('insert/Ibook', views.ibook),
+    path('insert/Iauthor', views.iauthor),
+    path('insert/Ipublisher', views.ipublisher),
+    path('query/Qdele', views.qdele),
+    path('search/', views.search),
 ]

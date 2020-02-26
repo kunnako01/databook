@@ -1,3 +1,20 @@
 {% extends 'layout.html' %} {% block content %}
-<h2>View</h2>
-{{sql_data_string}} {% endblock %}
+<h2 align="center">View</h2>
+<br>
+<ul align="center class=" list-group list-group-horizontal-sm ">
+    <li class="list-group-item ">First Name</li>
+    <li class="list-group-item ">{{user.first_name}}</li>
+</ul>
+<br>
+<ul align="center class="list-group list-group-horizontal-sm ">
+    <li class="list-group-item ">Last Name</li>
+    <li class="list-group-item ">{{user.last_name}}</li>
+</ul>
+<br>
+<ul align="center class=" list-group list-group-horizontal-sm ">
+    <li class="list-group-item ">Email</li>
+    <li class="list-group-item ">{{user.email}} </li>
+</ul>
+
+
+{% endblock %}

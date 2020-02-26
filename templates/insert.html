@@ -1,0 +1,67 @@
+{% extends 'layout.html' %} {% block content %}
+<h2 align="center">Insert</h2><br>
+
+<br> {% if cou == 0 %}
+<form method="POST">
+    <label for="">Choose Table </label> {% csrf_token %}
+    <select class="form-control form-control-lg" id="flide" name="flide"> 
+    <option value="book">book</option>
+    <option value="author">author</option>
+    <option value="publisher">publisher</option>
+  </select>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% elif cou == 1 %}
+<form action="Ibook" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">ID</label>
+        <input type="number" class="form-control" name="id" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" name="name" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Page</label>
+        <input type="number" class="form-control" name="page" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Year</label>
+        <input type="date" class="form-control" name="year" value="">
+
+    </div>
+    <div class="form-group">
+        <label for="">Publisher Name</label>
+        <input type="text" class="form-control" name="publishern" value="">
+    </div>
+    <input type="submit" value="Insert" class="btn btn-primary">
+</form>
+{% elif cou == 2 %}
+<form action="Iauthor" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" name="name" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Date</label>
+        <input type="date" class="form-control" name="year" value="">
+    </div>
+    <input type="submit" value="Insert" class="btn btn-primary">
+</form>
+{% elif cou == 3 %}
+<form action="Ipublisher" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" name="name" value="">
+    </div>
+    <div class="form-group">
+        <label for="">Address</label>
+        <input type="text" class="form-control" name="addr" value="">
+    </div>
+    <input type="submit" value="Insert" class="btn btn-primary">
+</form>
+{% endif %} {% endblock %}
