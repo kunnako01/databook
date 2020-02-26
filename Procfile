@@ -1,1 +1,1 @@
-web: gunicorn databasewebapp.wsgi
+web: gunicorn databasewebapp.wsgi --log-file -
